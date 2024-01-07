@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Prototype bean -->
+    <bean id="prototype" class="model.Prototype" scope="prototype">
+        <!-- No need for a constructor-arg as there's no dependency -->
+    </bean>
+
+    <!-- Singleton bean -->
+    <bean id="singleton" class="model.Singleton">
+        <!-- No need for a constructor-arg as there's no dependency -->
+    </bean>
+
+    <!-- FirstBean -->
+    <bean id="firstBean" class="model.FirstBean">
+        <constructor-arg ref="prototype"/>
+        <constructor-arg ref="singleton"/>
+    </bean>
+
+    <!-- SecondBean -->
+    <bean id="secondBean" class="model.SecondBean">
+        <constructor-arg ref="prototype"/>
+        <constructor-arg ref="singleton"/>
+    </bean>
+
+</beans>
